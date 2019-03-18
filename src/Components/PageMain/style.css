@@ -1,0 +1,9 @@
+.PageMain main {
+    padding: 50px;
+}
+
+.PageMain .LevelsList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}

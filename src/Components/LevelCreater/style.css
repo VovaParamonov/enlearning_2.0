@@ -1,0 +1,22 @@
+.create-window {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95vw;
+    height: 85vh;
+    background-color: #3c3f41f0;
+    padding: 50px;
+}
+
+.create-window__create-button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}

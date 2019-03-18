@@ -1,0 +1,17 @@
+.score-bar {
+    width: 80%;
+    height: 3px;
+    position: relative;
+    background-color: #2b2b2b;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.score-bar__fill {
+    position: absolute;
+    height: inherit;
+    background-color: #6cff42;
+    transition: width 0.5s;
+}
+

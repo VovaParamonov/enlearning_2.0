@@ -1,0 +1,56 @@
+.RoundWindow {
+    background-color: #3c3f41;
+    border-radius: 10px;
+    padding: 10px 10px;
+    display: flex;
+    width: 50vw;
+    margin: 100px auto;
+    flex-direction: column;
+    content: "Answer";
+}
+
+.RoundWindow form {
+    display: inherit;
+    flex-direction: inherit;
+}
+
+.RoundWindow__text {
+    color: white;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.RoundWindow__input {
+    margin-top: 10px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 17px;
+}
+
+.RoundWindow__button {
+    margin-top: 8px;
+    height: 40px;
+    background-color: inherit;
+    border: 1.7px solid white;
+    border-radius: 17px;
+    color: white;
+    opacity: 0.7;
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-size: 18px;
+    transition: all 0.7s;
+}
+
+.RoundWindow__button_action {
+    background-color: #ffc723;
+    border: none;
+    color: white;
+    opacity: 0.8;
+}
+
+.RoundWindow__button:hover {
+    opacity: 1;
+}
