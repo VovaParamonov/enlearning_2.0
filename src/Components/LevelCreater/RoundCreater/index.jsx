@@ -1,49 +1,51 @@
-import React,{ useState } from 'react';
+import React from 'react';
 
 import './style.css';
 
 export default function RoundCreater(props) {
-    //const [answers, setAnswers] = useState(['']);
-
-    function answerHandle(text, answerId) {
-        //setAnswers(answers.map((answer,id)=>{return (id===answerId)? text: answer}))
-    }
+    let questionHref = React.createRef();
+    let answerHrefs = [];
 
     function addAnswer(e) {
         e.preventDefault();
         props.addAnswer(props.roundId);
     }
 
+    function changeQuestion() {
+        props.changeQuestion(props.roundId, questionHref.current.value);
+    }
     function changeAnswer(answerId) {
-        const text = document.getElementById(`input-answer-${props.roundId}-${answerId}`).value;
+        const text = answerHrefs[answerId].current.value.toLowerCase();
         props.changeAnswer(props.roundId, answerId, text);
     }
 
     return(
         <div className="create-round-wrapper">
             <input
+                className='create-round__input'
                 type="text"
-                className="create-round__question-input"
                 placeholder="Вопрос"
-                defaultValue={props.question}
+                value={props.question}
+                onChange={changeQuestion}
+                ref={questionHref}
             />
             {
                 props.answer.map((answer,id) => {
+                    answerHrefs.push(React.createRef());
                     return(
                             <input
-                                key={id}
-                                id={`input-answer-${props.roundId}-${id}`}
+                                className='create-round__input'
+                                key={`${props.roundId}-${id}`}
                                 type="text"
-                                className="create-round__answer-input"
                                 placeholder={`Ответ №${id+1}`}
-                                defaultValue={answer}
-                                data-answer-id={id}
-                                onBlur={e => {e.preventDefault();changeAnswer(id)}}
+                                value={answer}
+                                onChange={()=>changeAnswer(id)}
+                                ref={answerHrefs[id]}
                             />
                         )
                 })
             }
-            <button className="create-window__add-answer-button" onClick={addAnswer}><i className="far fa-plus-square"></i></button>
+            <button className="create-round__add-btn" onClick={addAnswer}><i className="far fa-plus-square"></i></button>
         </div>
     );
 }

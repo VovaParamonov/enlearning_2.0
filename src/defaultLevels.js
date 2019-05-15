@@ -2,12 +2,12 @@ const defaultLevels = [
     {
         id: 1,
         name: "Colors",
-        description: "Демо уровень с цветами для демонстрации",
+        description: "Демо уровень с цветами",
         rounds: [
             {
                 id: 1,
                 text: 'black',
-                answer: ['черный']
+                answer: ['черный', 'чёрный']
             },
             {
                 id: 2,
@@ -39,7 +39,7 @@ const defaultLevels = [
     {
         id: 2,
         name: "Animals",
-        description: "Демо уровень с животными для демонстрации",
+        description: "Демо уровень с животными",
         rounds: [
             {
                 id: 1,
@@ -57,24 +57,8 @@ const defaultLevels = [
                 answer: ['краб']
             }
         ]
-    },
-    {
-        id: 3,
-        name: "level number three",
-        description: "description of level №3",
-        rounds: [
-            {
-                id: 1,
-                text: 'Text of first round',
-                answer: ['answer answer']
-            },
-            {
-                id: 2,
-                text: 'Text of second round',
-                answer: ['answer']
-            }
-        ]
     }
+
 ];
 
 export default defaultLevels;

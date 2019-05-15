@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import RoundCreater from "./RoundCreater";
 
@@ -10,6 +10,8 @@ export default class LevelCreater extends Component {
         super(props);
 
         this.state = {
+            title:'',
+            description:'',
             rounds: [
                 {
                     id: 1,
@@ -17,11 +19,10 @@ export default class LevelCreater extends Component {
                     answer: ['']
                 }
             ]
-        }
-    }
+        };
 
-    componentWillUpdate(nextProps, nextState, nextContext) {
-        console.log(nextState.rounds)
+        this.titleRef = React.createRef();
+        this.descriptionRef = React.createRef();
     }
 
     addRound = (e) => {
@@ -29,7 +30,7 @@ export default class LevelCreater extends Component {
         this.setState(oldState => {
             return {
                 rounds: oldState.rounds.concat([{
-                    id: oldState.rounds.length,
+                    id: oldState.rounds.length+1,
                     text: '',
                     answer: ['']
                 }])
@@ -50,11 +51,35 @@ export default class LevelCreater extends Component {
         })
     };
 
+    changeTitle = () => {
+        this.setState({
+            title: this.titleRef.current.value
+        })
+    };
+    changeDescription = () => {
+        this.setState({
+            description: this.descriptionRef.current.value
+        })
+    };
+
+    changeQuestion = (roundId, text) => {
+        this.setState(oldState => {
+            return {
+                rounds: oldState.rounds.map((round,rId) => {
+                    if (rId === roundId) {
+                        round.text = text
+                    }
+                    return round;
+                })
+            }
+        });
+    };
+
     changeAnswer = (roundId, answerId, text) => {
         this.setState(oldState => {
             let newRounds = oldState.rounds.slice();
 
-            newRounds.rounds = newRounds.rounds.map((round,rId) => {
+            newRounds = newRounds.map((round,rId) => {
                 if (rId === roundId) {
                     round.answer = round.answer.map((ans, ansId) => {
                         if (ansId === answerId) {
@@ -75,39 +100,58 @@ export default class LevelCreater extends Component {
 
     create = (e) => {
         e.preventDefault();
-        // const finalLevel=this.state.rounds.map((round,rId) => {
-        //     round.answer.map((ans, ansId) => {
-        //         return document.getElementById(`input-answer-${rId}-${ansId}`).value
-        //     });
-        //
-        //     return round;
-        // });
-        console.log(this.state.rounds);
+        if (this.state.rounds.length <= 2)
+            return alert('В уровне должно быть больше двух раундов');
+        let newLevel = {
+            id: 'none',
+            name: this.state.title || 'MyLevel',
+            description: this.state.description,
+            rounds: this.state.rounds
+        };
+        this.props.addLevel(newLevel);
     };
 
     render() {
         return (
             <div className="create-window">
+                <button onClick={this.props.levelCreaterToggle} className='level-creater__exit-btn' ><i className="far fa-times-circle"></i></button>
                 <form action="#" className="create-form">
+                    <div className='level-create__head'>
+                        <input
+                            className='level-creat__title'
+                            ref={this.titleRef}
+                            type="text"
+                            value={this.state.title}
+                            placeholder='Название'
+                            onChange={this.changeTitle}
+                        />
+                        <input
+                            className='level-creat__description'
+                            ref={this.descriptionRef}
+                            type="text"
+                            value={this.state.description}
+                            placeholder='Описание'
+                            onChange={this.changeDescription}
+                        />
+
+                    </div>
                     {
-                        this.state.rounds.map((round,id) => {
-                            return (
+                        this.state.rounds.map((round,id) => (
                                 <RoundCreater
                                     key={id}
                                     roundId={id}
                                     question={round.text}
                                     answer={round.answer}
                                     addAnswer={this.addAnswer}
+                                    changeQuestion={this.changeQuestion}
                                     changeAnswer={this.changeAnswer}
                                 />
-                            )
-                        })
+                        ))
                     }
                 </form>
-                <button className="create-window__add-round-button" onClick={this.addRound}><i className="far fa-plus-square"></i></button>
+                <button className="create-round__add-btn create-round__add-round-btn" onClick={this.addRound}><i className="far fa-plus-square"></i></button>
                 <button className="create-window__create-button" onClick={this.create}>Создать</button>
             </div>
         )
     }
-
 }

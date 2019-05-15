@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 
 import "./style.css";
+import { Transition ,TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default class RoundWindow extends Component {
     constructor(props) {
@@ -9,8 +10,14 @@ export default class RoundWindow extends Component {
 
         this.state = {
             result: "await", //--[true/false/await]--//
-            buttonActive: false
+            buttonActive: false,
+            exitMode: "RoundWindow",
+            show: true
         };
+    }
+
+    componentDidMount() {
+        this.setState({show:true});
     }
 
     roundClear = () => {
@@ -27,13 +34,16 @@ export default class RoundWindow extends Component {
 
         if (this.props.answer.find( (el) => (el === answer) )) {
             this.props.changeScore(1);
-            this.props.goNextRound(this.props.roundId);
-            this.roundClear();
+            this.setState({exitMode:"right-answer", show:false});
+
         } else {
             alert("Неправильно!");
             this.props.changeScore(-1);
-            this.roundClear();
+            this.setState({exitMode:"fail-answer", show:false});
+
         }
+
+        this.setState({show:false});
     };
 
     getAnswer = () => {
@@ -53,30 +63,55 @@ export default class RoundWindow extends Component {
     };
 
     render() {
+        console.log(this.props.answer);
+
         const text = this.props.text;
         const buttonText = (this.state.buttonActive)? "Проверить": "Пропустить";
-        const buttonClassName = (this.state.buttonActive)? "RoundWindow__button RoundWindow__button_action":
+        const buttonClassName = (this.state.buttonActive)?
+            "RoundWindow__button RoundWindow__button_action":
             "RoundWindow__button";
 
         return (
-            <div className={"RoundWindow"}>
-                <p className={"RoundWindow__text"} >{text}</p>
-                <form action="#" onSubmit={this.checkAnswer}>
-                    <input
-                        type="text"
-                        className={"RoundWindow__input"}
-                        onChange={this.buttonActive}
-                    />
-                    <input
-                        type="submit"
-                        value={buttonText}
-                        className={buttonClassName}
-                    />
-                </form>
-            </div>
+            <Transition
+                in={this.state.show}
+                timeout={0}
+                // unmountOnExit={true}
+                onExited={
+                    () => {
+                        this.roundClear();
+                        this.props.goNextRound(this.props.roundId);
+                        setTimeout(()=>this.setState({exitMode:"RoundWindow", show:true}),1000);
+                    }
+                }
+            >
+
+                {(state) => {
+                    const animationClassName = `${this.state.exitMode}-${state}`;
+
+                    return (
+                            <div className={`RoundWindow ${animationClassName}`}>
+                                <p className={"RoundWindow__text"} >{text}</p>
+                                <form action="#" onSubmit={this.checkAnswer}>
+                                    <input
+                                        type="text"
+                                        className={"RoundWindow__input"}
+                                        onChange={this.buttonActive}
+                                    />
+                                    <input
+                                        type="submit"
+                                        value={buttonText}
+                                        className={buttonClassName}
+                                    />
+                                </form>
+                            </div>
+                        )
+                }}
+
+            </Transition>
+
         )
     }
-}
+};
 
 RoundWindow.propTypes = {
     text: PropTypes.string,

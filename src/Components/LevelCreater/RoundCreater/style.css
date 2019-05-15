@@ -1,0 +1,49 @@
+.create-round-wrapper {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.create-round__input:nth-child(1) {
+    background-color: #bababa;
+    color: #2b2b2b;
+}
+.create-round__input {
+    background-color: #2b2b2b;
+    border: none;
+    border-radius: 100px;
+    padding: 10px;
+    color: whitesmoke;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.create-round__add-btn {
+    width: 35px;
+    height: 35px;
+    color: whitesmoke;
+    background-color: #2b2b2b;
+    border: none;
+    border-radius: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #202020;
+    transform: translateY(-3px);
+}
+.create-round__add-round-btn {
+    background-color: #bababa;
+    color: #2b2b2b;
+    box-shadow: 0 3px 0 #868686;
+}
+.create-round__add-btn:hover {
+    box-shadow: 0 2px 0 #202020;
+    transform: translateY(-2px);
+}
+.create-round__add-round-btn:hover {
+    box-shadow: 0 2px 0 #868686;
+}
+.create-round__add-btn:focus {
+    background-color: #66af50;
+    box-shadow: 0 3px 0 #478342;
+}

@@ -6,10 +6,6 @@ import './style.css';
 export default class LevelCard extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-
-        }
     }
 
     deleteSelf = () => {
@@ -28,14 +24,17 @@ export default class LevelCard extends Component {
 
     render() {
         return (
-            <div className={"LevelCard"} onClick={this.startLevel}>
+            <li className={"LevelCard"} onClick={this.startLevel}>
+                <div className='LevelCard__play'>
+                    <i className="fas fa-play"></i>
+                </div>
                 <h2 className={"LevelCard__name"}>{this.props.name}</h2>
                 <p className={"LevelCard__description"}>{this.props.description}</p>
                 <i
                     className={"fas fa-trash-alt"}
                     onClick={this.deleteSelf}
                 />
-            </div>
+            </li>
         )
     }
 }

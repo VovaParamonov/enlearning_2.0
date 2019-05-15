@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import './style.css';
-import LevelHeader from "../LevelHeader";
-import RoundWindow from "../RoundWindow";
-import randomInteger from "../../funcs";
+import LevelHeader from "../../LevelHeader";
+import RoundWindow from "../../RoundWindow";
+import { randomInteger }  from "../../../funcs";
 
 export default class PageLevel extends Component {
     constructor(props) {
@@ -52,7 +52,7 @@ export default class PageLevel extends Component {
     };
 
     exitLevel = () => {
-        this.props.goPage("PageMain");
+        this.props.endLevel();
     };
 
     render() {
@@ -69,15 +69,15 @@ export default class PageLevel extends Component {
         return (
             <div className={"PageLevel"}>
                 <LevelHeader levelName={this.props.name} score={score}/>
-                <div>
-                    <RoundWindow
-                        text={roundText}
-                        answer={roundAnswer}
-                        roundId={roundId}
-                        goNextRound={this.goNextRound}
-                        changeScore={this.changeScore}
-                    />
-                </div>
+
+                <RoundWindow
+                    text={roundText}
+                    answer={roundAnswer}
+                    roundId={roundId}
+                    goNextRound={this.goNextRound}
+                    changeScore={this.changeScore}
+                />
+
             </div>
         )
     }

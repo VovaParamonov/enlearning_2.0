@@ -9,3 +9,7 @@ body {
     font-family: "Poiret One";
     background-color: #6ccfff;
 }
+
+#root {
+    height: 100vh;
+}

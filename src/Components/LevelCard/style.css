@@ -3,12 +3,45 @@
     height: 100px;
     background-color: #2b2b2b;
     color: whitesmoke;
-    padding: 15px;
-    cursor: pointer;
+    padding: 15px;cursor: pointer;
+
     border-radius: 8px;
     font-size: 14px;
     margin-bottom: 20px;
     position: relative;
+    transition: all 0.8s;
+}
+.LevelCard__play i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.LevelCard__play {
+    left: 0;
+    top: 0;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #1d1d1d;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: all 0.8s;
+    padding: 0;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+.LevelCard:hover {
+    padding-left: 45px;
+}
+.LevelCard:hover .LevelCard__play {
+    width: 40px;
+    opacity: 1;
+    padding: 0 5px;
 }
 
 .LevelCard__name {
@@ -25,3 +58,6 @@
     top: 20%;
     font-size: 20px;
 }
+
+
+

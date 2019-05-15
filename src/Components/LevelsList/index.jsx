@@ -1,51 +1,28 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 
-import defaultLevels from "../../defaultLevels";
-
 import './style.css';
 
 import LevelCard from "../LevelCard";
 
-const levels = defaultLevels;
-
-export default class LevelsList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            levels: levels
-        }
-    }
-
-    deleteCard = (cardId) => {
-        this.setState(oldState => {
-            return {levels: oldState.levels.filter(elem => elem.id !== cardId)}
-        })
-    };
-
-
-    getListElements = (arr) => {
-        return arr.map(elem => (
+export default function LevelsList (props) {
+    const getListElements = arr => (arr.map(elem => (
                 <LevelCard
                     key={elem.id}
                     id={elem.id}
                     name={elem.name}
                     description={elem.description}
                     rounds={elem.rounds}
-                    startLevel={this.props.startLevel}
-                    deleteCard={this.deleteCard}
+                    startLevel={props.startLevel}
+                    deleteCard={props.deleteCard}
                 />
-            ));
-    };
+                )));
 
-    render() {
-        return (
-            <li className={"LevelsList"}>
-                {this.getListElements(this.state.levels)}
-            </li>
-        )
-    }
+    return (
+        <ul className={"LevelsList"}>
+            {getListElements(props.levels)}
+        </ul>
+    )
 }
 
 LevelsList.propTypes = {

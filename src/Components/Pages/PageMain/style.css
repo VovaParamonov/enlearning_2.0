@@ -1,0 +1,21 @@
+.PageMain main {
+    padding: 50px;
+}
+
+.PageMain .LevelsList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.levels-list__add-btn {
+    height: 60px;
+    width: 60px;
+    font-size: 30px;
+    background-color: #2b2b2b;
+    border: none;
+    border-radius: 8px;
+    color: whitesmoke;
+    cursor: pointer;
+    text-shadow: 0 0 3px whitesmoke;
+}
