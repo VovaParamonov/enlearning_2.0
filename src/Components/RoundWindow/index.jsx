@@ -37,7 +37,6 @@ export default class RoundWindow extends Component {
             this.setState({exitMode:"right-answer", show:false});
 
         } else {
-            alert("Неправильно!");
             this.props.changeScore(-1);
             this.setState({exitMode:"fail-answer", show:false});
 
@@ -78,9 +77,11 @@ export default class RoundWindow extends Component {
                 // unmountOnExit={true}
                 onExited={
                     () => {
-                        this.roundClear();
-                        this.props.goNextRound(this.props.roundId);
-                        setTimeout(()=>this.setState({exitMode:"RoundWindow", show:true}),1000);
+                        setTimeout(()=>{
+                            this.setState({exitMode:"RoundWindow", show:true})
+                            this.props.goNextRound(this.props.roundId);
+                            this.roundClear();
+                        },500);
                     }
                 }
             >
