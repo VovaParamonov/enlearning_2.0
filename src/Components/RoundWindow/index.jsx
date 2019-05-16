@@ -77,10 +77,10 @@ export default class RoundWindow extends Component {
                 // unmountOnExit={true}
                 onExited={
                     () => {
+                        this.roundClear();
                         setTimeout(()=>{
                             this.setState({exitMode:"RoundWindow", show:true})
                             this.props.goNextRound(this.props.roundId);
-                            this.roundClear();
                         },500);
                     }
                 }

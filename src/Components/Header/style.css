@@ -10,3 +10,10 @@ header {
     font-size: 20px;
 }
 
+@media (max-height: 500px) {
+    header {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+}

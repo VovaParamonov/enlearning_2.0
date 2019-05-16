@@ -52,11 +52,15 @@
     padding: 15px;
 }
 
-.fas {
+.delete-icon {
     position: absolute;
-    right: 2%;
-    top: 20%;
+    right: 20px;
+    top: 20px;
     font-size: 20px;
+    transition: color 0.2s;
+}
+.delete-icon:hover {
+    color: #ff7d7d;
 }
 
 

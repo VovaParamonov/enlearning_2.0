@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import './style.css';
+import './../../hint.css';
 
 import PageMain from "../Pages/PageMain";
 import PageLevel from "../Pages/PageLevel";

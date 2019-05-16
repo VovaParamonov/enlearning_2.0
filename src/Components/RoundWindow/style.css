@@ -152,3 +152,16 @@
         transform: translate3d(0, 2000px, 0);
     }
 }
+
+
+@media (max-height: 500px) {
+    .RoundWindow {
+        margin: 40px auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .RoundWindow {
+        width: 80vw;
+    }
+}

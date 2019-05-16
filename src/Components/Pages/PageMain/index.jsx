@@ -61,7 +61,8 @@ export default class PageMain extends Component{
                         deleteCard={this.deleteCard}
                     />
                     <button
-                        className='levels-list__add-btn'
+                        className='levels-list__add-btn hint--right'
+                        aria-label='Создать новый тест'
                         onClick={this.levelCreaterToggle}
                     >
                         <i className="far fa-plus-square"></i>

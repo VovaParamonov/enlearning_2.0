@@ -31,7 +31,7 @@ export default class LevelCard extends Component {
                 <h2 className={"LevelCard__name"}>{this.props.name}</h2>
                 <p className={"LevelCard__description"}>{this.props.description}</p>
                 <i
-                    className={"fas fa-trash-alt"}
+                    className={"fas fa-trash-alt delete-icon"}
                     onClick={this.deleteSelf}
                 />
             </li>
