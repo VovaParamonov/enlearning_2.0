@@ -8,6 +8,9 @@
 body {
     font-family: "Poiret One";
     background-color: #6ccfff;
+
+    background: rgb(48,201,254);
+    background: linear-gradient(45deg, rgba(48,201,254,1) 28%, rgba(147,228,255,1) 68%);
 }
 
 #root {

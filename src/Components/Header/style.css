@@ -1,8 +1,26 @@
-header {
-    text-align: center;
-    padding: 35px 0;
+header.header-main {
+    /*min-height: 20vh;*/
+    /*text-align: center;*/
+    padding: 0px;
     font-size: 22px;
-    background-color: #629fcdd0;
+    display: flex;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: end;
+
+    /*background-color: #93e4ff;*/
+    /*background: rgb(147,228,255);*/
+    /*background: linear-gradient(45deg, rgba(147,228,255,1) 26%, rgba(48,201,254,1) 68%);*/
+    /*background-color: #629fcdd0;*/
+}
+
+
+.eni_logo {
+    float: left;
+    width: 70px;
+    position: relative;
+    left: 40px;
+    bottom: 15px;
 }
 
 .logoMain span {
@@ -11,7 +29,7 @@ header {
 }
 
 @media (max-height: 500px) {
-    header {
+    header.header-main {
         font-size: 12px;
         padding: 10px;
     }

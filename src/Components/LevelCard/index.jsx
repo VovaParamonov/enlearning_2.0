@@ -3,40 +3,34 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-export default class LevelCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    deleteSelf = () => {
-        this.props.deleteCard(this.props.id)
+export default function LevelCard (props){
+    const deleteSelf = () => {
+        props.deleteCard(props.id)
     };
 
-    startLevel = (e) => {
-        if(e.target.className === "fas fa-trash-alt"){
-            return this.deleteSelf();
+    const startLevel = (e) => {
+        if(e.target.className === "fas fa-trash-alt delete-icon"){ // fix
+            return deleteSelf();
         }
-        this.props.startLevel({
-            name: this.props.name,
-            rounds: this.props.rounds
+        props.startLevel({
+            name: props.name,
+            rounds: props.rounds
         });
     };
 
-    render() {
-        return (
-            <li className={"LevelCard"} onClick={this.startLevel}>
-                <div className='LevelCard__play'>
-                    <i className="fas fa-play"></i>
-                </div>
-                <h2 className={"LevelCard__name"}>{this.props.name}</h2>
-                <p className={"LevelCard__description"}>{this.props.description}</p>
-                <i
-                    className={"fas fa-trash-alt delete-icon"}
-                    onClick={this.deleteSelf}
-                />
-            </li>
-        )
-    }
+    return (
+        <li className={"LevelCard"} onClick={startLevel}>
+            <div className='LevelCard__play'>
+                <i className="fas fa-play"></i>
+            </div>
+            <h2 className={"LevelCard__name"}>{props.name}</h2>
+            <p className={"LevelCard__description"}>{props.description}</p>
+            <i
+                className="fas fa-trash-alt delete-icon"
+                onClick={deleteSelf}
+            />
+        </li>
+    )
 }
 
 LevelCard.propTypes = {
@@ -47,3 +41,5 @@ LevelCard.propTypes = {
     id: PropTypes.number,
     deleteCard: PropTypes.func
 };
+
+//start change

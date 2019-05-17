@@ -1,5 +1,21 @@
+.PageMain {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 5fr;
+    padding: 20px;
+    grid-gap: 20px;
+    height: 100vh;
+}
+
 .PageMain main {
-    padding: 50px;
+    padding: 20px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    background: rgb(48,201,254);
+    background: linear-gradient(45deg, rgba(48,201,254,1) 28%, rgba(147,228,255,1) 68%);
+    box-shadow: 0 0 10px #258ab4;
+
+    /*min-height: 70vh;*/
 }
 
 .PageMain .LevelsList {

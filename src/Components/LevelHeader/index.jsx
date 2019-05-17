@@ -16,7 +16,7 @@ export default class LevelHeader extends Component {
         const score = this.props.score;
 
         return (
-            <header>
+            <header className="header-level">
                 <h1>{this.props.levelName}</h1>
                 <h1 className={"header__score"}>{`Score: ${score}`}</h1>
                 <div className="score-bar"><div className="score-bar__fill" style={{"width":`${score * 10}%`}}></div></div>
