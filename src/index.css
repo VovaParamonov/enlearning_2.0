@@ -11,6 +11,8 @@ body {
 
     background: rgb(48,201,254);
     background: linear-gradient(45deg, rgba(48,201,254,1) 28%, rgba(147,228,255,1) 68%);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
 }
 
 #root {

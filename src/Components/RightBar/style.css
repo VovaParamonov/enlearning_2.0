@@ -1,8 +1,6 @@
 .right-bar {
     display: flex;
-    float: right;
 
-    /*min-height: 70vh;*/
     border-radius: 8px;
     padding: 10px;
     text-align: center;
@@ -10,4 +8,15 @@
     background: rgb(48,201,254);
     background: linear-gradient(45deg, rgba(48,201,254,1) 28%, rgba(147,228,255,1) 68%);
     box-shadow: 0 0 10px #258ab4;
+
+    min-height: 200px;
+    width: 250px;
+    align-self: flex-start;
+
+}
+
+@media (max-width: 559px) {
+    .right-bar {
+        width: 100%;
+    }
 }

@@ -44,21 +44,23 @@ export default function PageMain (props) {
     return (
         <div className={"PageMain"}>
              <Header/>
-             <main>
-                 <LevelsList
-                     levels={levels}
-                     startLevel={props.startLevel}
-                     deleteCard={deleteCard}
-                 />
-                 <button
-                     className='levels-list__add-btn hint--right'
-                     aria-label='Создать новый тест'
-                     onClick={levelCreaterToggle}
-                 >
-                     <i className="far fa-plus-square"></i>
-                 </button>
-             </main>
-            <RightBar/>
+             <div className="PageMain__content">
+                 <main>
+                     <LevelsList
+                         levels={levels}
+                         startLevel={props.startLevel}
+                         deleteCard={deleteCard}
+                     />
+                     <button
+                         className='levels-list__add-btn hint--right'
+                         aria-label='Создать новый тест'
+                         onClick={levelCreaterToggle}
+                     >
+                         <i className="far fa-plus-square"></i>
+                     </button>
+                 </main>
+                 <RightBar/>
+             </div>
             {(levelCreater)?<LevelCreater levelCreaterToggle={levelCreaterToggle} addLevel={addLevel} />:''}
          </div>
     )
