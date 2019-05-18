@@ -43,9 +43,8 @@
     text-shadow: 0 0 3px whitesmoke;
 }
 
-@media (max-width: 559px) {
+@media (max-width: 619px) {
     .PageMain main {
-        margin-bottom: 20px;
         margin-right: 0;
     }
 }

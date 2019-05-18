@@ -148,8 +148,9 @@ export default class LevelCreater extends Component {
                                 />
                         ))
                     }
+                    <button className="create-round__add-btn create-round__add-round-btn" onClick={this.addRound}><i className="far fa-plus-square"></i></button>
                 </form>
-                <button className="create-round__add-btn create-round__add-round-btn" onClick={this.addRound}><i className="far fa-plus-square"></i></button>
+
                 <button className="create-window__create-button" onClick={this.create}>Создать</button>
             </div>
         )

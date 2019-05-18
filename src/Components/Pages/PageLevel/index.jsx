@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import './style.css';
 import LevelHeader from "../../LevelHeader";
 import RoundWindow from "../../RoundWindow";
-import { randomInteger }  from "../../../funcs";
+import { randomInteger, setCookie }  from "../../../funcs";
+
 
 export default class PageLevel extends Component {
     constructor(props) {
@@ -13,7 +14,10 @@ export default class PageLevel extends Component {
         this.state = {
             roundSelected: 1,
             roundsCompleted: [],
-            score: 0
+            score: 0,
+            err: 0,
+            right: 0,
+            startTime: new Date()
         }
     }
 
@@ -43,8 +47,11 @@ export default class PageLevel extends Component {
             }
         } else if (this.state.score >= 9) {
             setTimeout(this.exitLevel, 1000);
-
         }
+
+        (changes >0)?
+            this.setState(oldState=>({right:oldState.right+1})):
+            this.setState(oldState=>({err:oldState.err+1}));
 
         this.setState((state) => {
             return{score: state.score + changes}
@@ -52,6 +59,16 @@ export default class PageLevel extends Component {
     };
 
     exitLevel = () => {
+        const date = new Date();
+        setCookie('lastStatistic', JSON.stringify(
+            {
+                levelName: this.props.name,
+                error: this.state.err,
+                right: this.state.right,
+                speed: (date - this.state.startTime) / 1000,
+                completed: `${date.getMonth()+1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+            }
+        ));
         this.props.endLevel();
     };
 
@@ -63,8 +80,6 @@ export default class PageLevel extends Component {
         const roundText = round.text;
         const roundAnswer = round.answer;
         const roundId = round.id;
-
-
 
         return (
             <div className={"PageLevel"}>

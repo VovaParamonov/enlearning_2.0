@@ -1,5 +1,6 @@
 .right-bar {
     display: flex;
+    flex-direction: column;
 
     border-radius: 8px;
     padding: 10px;
@@ -12,11 +13,47 @@
     min-height: 200px;
     width: 250px;
     align-self: flex-start;
-
 }
 
-@media (max-width: 559px) {
+.right-bar__empty {
+    opacity: 0.6;
+}
+
+.right-bar__img {
+    width: 150px;
+    align-self: center;
+    margin-top: 20px;
+}
+
+.right-bar__empty-text {
+    transform: translateY(-30px);
+    color: #565656;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.right-bar__statistic {
+    margin-left: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: bold;
+}
+.statistic__level-name {
+    color: white;
+    margin-bottom: 10px;
+}
+.right-bar__statistic span { /*Completed date*/
+    margin-top: 20px;
+    color: #4a4a4a;
+    opacity: 0.8;
+}
+
+@media (max-width: 619px) {
     .right-bar {
         width: 100%;
+        order: -1;
+        margin-bottom: 20px;
     }
 }
