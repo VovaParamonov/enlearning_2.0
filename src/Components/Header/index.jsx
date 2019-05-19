@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import './style.css';
-// import logo from '../../../public/Eni-min.png';
 
-export default class Header extends Component {
-    render() {
-        return (
-            <header className="header-main" >
-                <img className="eni_logo" src={require('../../img/Eni-min.svg')} alt=""/>
-                <h1 className={"logoMain"}><span>local</span>EnLearning</h1>
-            </header>
-        )
-    }
+export default function Header (props) {
+    return (
+        <header className="header-main" >
+            <img className="eni_logo" src={require('../../img/Eni-min.svg')} alt=""/>
+            <h1 className={"logoMain"}><span>local</span>EnLearning</h1>
+        </header>
+    )
 }

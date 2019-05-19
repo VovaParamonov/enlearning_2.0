@@ -2,21 +2,14 @@ import React from 'react';
 
 import './style.css';
 
-import { getCookie, setCookie } from "../../funcs";
+import { getCookie } from "../../funcs";
 
 export default function RightBar (props) {
 
-    // setCookie("lastStatistic", JSON.stringify({
-    //     error: 3,
-    //     right: 9,
-    //     speed: 382
-    // }));
     let statistic;
     if(getCookie("lastStatistic")) {
         statistic = JSON.parse(getCookie("lastStatistic"));
     }
-
-    // console.log(statistic);
 
     return (
         <article className="right-bar" >

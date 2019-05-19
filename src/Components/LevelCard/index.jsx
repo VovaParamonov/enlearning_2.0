@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './style.css';
@@ -41,5 +41,3 @@ LevelCard.propTypes = {
     id: PropTypes.number,
     deleteCard: PropTypes.func
 };
-
-//start change

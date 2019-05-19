@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 import './style.css';
 import './../../hint.css';
@@ -6,42 +6,29 @@ import './../../hint.css';
 import PageMain from "../Pages/PageMain";
 import PageLevel from "../Pages/PageLevel";
 
-import { setCookie, getCookie } from '../../funcs';
-
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            selectedPage: <PageMain startLevel={this.startLevel} />
-        };
-
-        this.pageMain = <PageMain startLevel={this.startLevel} />
-    }
-
-    endLevel = () => {
-        this.goPage(this.pageMain)
+export default function App (props) {
+    const goPage = (page) => {
+        setSelectedPage(page);
     };
 
-    startLevel = (levelData) => {
-        const newPage = <PageLevel
+    const endLevel = () => {
+        goPage(pageMain);
+    };
+
+    const startLevel = levelData => {
+        const newPage = <PageLevel // create level page
             name={levelData.name}
             rounds={levelData.rounds}
-            goPage={this.goPage}
-            endLevel={this.endLevel}
+            goPage={goPage}
+            endLevel={endLevel}
         />;
 
-        this.goPage(newPage);
+        goPage(newPage);
     };
 
+    let pageMain = <PageMain startLevel={startLevel} />;
 
+    const [selectedPage, setSelectedPage] = useState(pageMain);
 
-    goPage = (page) => {
-        this.setState({selectedPage: page});
-    };
-
-    render() {
-        return this.state.selectedPage
-    }
+    return selectedPage
 }
-
