@@ -48,8 +48,6 @@ export default function RoundWindow (props) {
         }
     };
 
-    console.log(props.answer);
-
     const text = props.text;
     const buttonText = buttonActive? "Проверить": "Пропустить";
     const buttonClassName = buttonActive?

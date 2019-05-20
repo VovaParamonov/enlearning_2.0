@@ -12,7 +12,7 @@ export default function PageLevel (props) {
     const [score, setScore] = useState(0);
     const [err, setErr] = useState(0);
     const [right, setRight] = useState(0);
-    const [startTime, setStartTime] = useState(0);
+    const [startTime] = useState(new Date());
 
     const goNextRound =(selectedNow) => {
         let nextRoundId = randomInteger(1, props.rounds.length);
@@ -34,6 +34,8 @@ export default function PageLevel (props) {
             setRight(right+1):
             setErr(err+1);
 
+        console.log(right);
+
         if (changes < 0){
             if (score === 0) {
                 return
@@ -51,7 +53,7 @@ export default function PageLevel (props) {
             {
                 levelName: props.name,
                 error: err,
-                right: right,
+                right: right+1,
                 speed: (date - startTime) / 1000,
                 completed: `${date.getMonth()+1}.${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
             }
@@ -59,27 +61,24 @@ export default function PageLevel (props) {
         props.endLevel();
     };
 
-        let round = props.rounds.find((round) => (
-            round.id === roundSelected)
-        );
-        const roundText = round.text;
-        const roundAnswer = round.answer;
-        const roundId = round.id;
+    let round = props.rounds.find((round) => (
+        round.id === roundSelected)
+    );
 
-        return (
-            <div className={"PageLevel"}>
-                <LevelHeader levelName={props.name} score={score}/>
+    return (
+        <div className={"PageLevel"}>
+            <LevelHeader levelName={props.name} score={score}/>
 
-                <RoundWindow
-                    text={roundText}
-                    answer={roundAnswer}
-                    roundId={roundId}
-                    goNextRound={goNextRound}
-                    changeScore={changeScore}
-                />
+            <RoundWindow
+                text={round.text}
+                answer={round.answer}
+                roundId={round.id}
+                goNextRound={goNextRound}
+                changeScore={changeScore}
+            />
 
-            </div>
-        )
+        </div>
+    )
 
 
 }

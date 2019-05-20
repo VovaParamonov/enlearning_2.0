@@ -1,87 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import RoundCreater from "./RoundCreater";
+import { useLevelCtreater } from '../../hooks'
 
 import './style.css';
 
+
 export default function LevelCreater (props) {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [rounds, setRounds] = useState([{
-        id: 1,
-        text: '',
-        answer: ['']
-    }]);
-
-    const titleRef = React.createRef();
-    const descriptionRef = React.createRef();
-
-    const addRound = (e) => {
-        e.preventDefault();
-        setRounds(rounds.concat([{
-            id: rounds.length+1,
-            text: '',
-            answer: ['']
-        }]));
-    };
-
-    const addAnswer = (roundId) => {
-        setRounds(rounds.map((round,id) => {
-            if (id === roundId){
-                round.answer.push('');
-            }
-            return round
-        }));
-    };
-
-    const changeTitle = () => {
-        setTitle(titleRef.current.value);
-    };
-
-    const changeDescription = () => {
-        setDescription(descriptionRef.current.value);
-    };
-
-    const changeQuestion = (roundId, text) => {
-        setRounds(rounds.map((round,rId) => {
-            if (rId === roundId) {
-                round.text = text
-            }
-            return round;
-        }));
-    };
-
-    const changeAnswer = (roundId, answerId, text) => {
-        let newRounds = rounds.slice();
-
-        newRounds = newRounds.map((round,rId) => {
-            if (rId === roundId) {
-                round.answer = round.answer.map((ans, ansId) => {
-                    if (ansId === answerId) {
-                        return text;
-                    } else {
-                        return ans;
-                    }
-                });
-            }
-            return round;
-        });
-
-        setRounds(newRounds.slice());
-    };
-
-    const create = (e) => {
-        e.preventDefault();
-        if (rounds.length <= 2)
-            return alert('В уровне должно быть больше двух раундов');
-        let newLevel = {
-            id: 'none',
-            name: title || 'MyLevel',
-            description: description,
-            rounds: rounds
-        };
-        props.addLevel(newLevel);
-    };
+    const [
+        title, description, rounds,
+        addator, // has methods for add: round, answer
+        changer, // has methods for change: title,description,question,answer
+        create,
+        titleRef, descriptionRef
+    ] = useLevelCtreater(props);
 
     return (
         <div className="create-window">
@@ -93,38 +25,36 @@ export default function LevelCreater (props) {
                         ref={titleRef}
                         type="text"
                         value={title}
-                        placeholder='Название'
-                        onChange={changeTitle}
+                        placeholder='Name of level'
+                        onChange={changer.title}
                     />
                     <input
                         className='level-creat__description'
                         ref={descriptionRef}
                         type="text"
                         value={description}
-                        placeholder='Описание'
-                        onChange={changeDescription}
+                        placeholder='Description'
+                        onChange={changer.description}
                     />
-
                 </div>
                 {
                     rounds.map((round,id) => (
-                            <RoundCreater
-                                key={id}
-                                roundId={id}
-                                question={round.text}
-                                answer={round.answer}
-                                addAnswer={addAnswer}
-                                changeQuestion={changeQuestion}
-                                changeAnswer={changeAnswer}
-                            />
+                        <RoundCreater
+                            key={id}
+                            roundId={id}
+                            question={round.text}
+                            answer={round.answer}
+                            addAnswer={addator.answer}
+                            changeQuestion={changer.question}
+                            changeAnswer={changer.answer}
+                        />
                     ))
                 }
-                <button className="create-round__add-btn create-round__add-round-btn" onClick={addRound}><i className="far fa-plus-square"></i></button>
+                <button className="create-round__add-btn create-round__add-round-btn" onClick={addator.round}><i className="far fa-plus-square"></i></button>
             </form>
             <button className="create-window__create-button" onClick={create}>Создать</button>
         </div>
     )
-
 }
 
 
