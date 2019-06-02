@@ -2,4 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## What is it
 
-It is my project for practic and learning React
+It is my project for practice and learn React
