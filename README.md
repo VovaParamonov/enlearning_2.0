@@ -10,4 +10,4 @@ This project is application for practice and learn React
  * to create self tests
  * to look statistic of last test
  
- Application has desktop and mobile versions
+ Application has desktop and mobile versions.
