@@ -11,3 +11,4 @@ This project is application for practice and learn React
  * to look statistic of last test
  
  Application has desktop and mobile versions.
+ You can see demo [here](https://vovaparamonov.github.io)
