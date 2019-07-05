@@ -44,9 +44,11 @@ export default function LevelCreater (props) {
                             roundId={id}
                             question={round.text}
                             answer={round.answer}
+                            mode={round.mode}
                             addAnswer={addator.answer}
                             changeQuestion={changer.question}
                             changeAnswer={changer.answer}
+                            changeMode={changer.mode}
                         />
                     ))
                 }

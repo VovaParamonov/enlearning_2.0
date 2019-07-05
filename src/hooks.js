@@ -1,25 +1,30 @@
 import React, { useState }from 'react';
 import {randomInteger, setCookie} from "./funcs";
 
+class Round {
+    constructor(newId, newText, newAnswer, newMode) {
+        this.id = newId || this.id;
+        this.text = newText || this.text;
+        this.answer = newAnswer || this.answer;
+        this.mode = newMode || this.mode
+    }
+    id = 1;
+    text ='';
+    answer = [''];
+    mode = "Write";
+}
+
 const useLevelCtreater = props => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [rounds, setRounds] = useState([{
-        id: 1,
-        text: '',
-        answer: ['']
-    }]);
+    const [rounds, setRounds] = useState([new Round()]);
 
     const titleRef = React.createRef();
     const descriptionRef = React.createRef();
 
     const addRound = (e) => {
         e.preventDefault();
-        setRounds(rounds.concat([{
-            id: rounds.length+1,
-            text: '',
-            answer: ['']
-        }]));
+        setRounds(rounds.concat([new Round(rounds.length+1)]));
     };
 
     const addAnswer = (roundId) => {
@@ -67,11 +72,22 @@ const useLevelCtreater = props => {
         setRounds(newRounds.slice());
     };
 
+    const changeMode = (roundId, newMode) => {
+        setRounds(rounds.map((round, rId) => {
+            if (rId === roundId) {
+                round.mode = newMode;
+            }
+
+            return round;
+        }));
+    };
+
     const changer = {
         title: changeTitle,
         description: changeDescription,
         question: changeQuestion,
         answer: changeAnswer,
+        mode: changeMode
     };
 
     const addater = {

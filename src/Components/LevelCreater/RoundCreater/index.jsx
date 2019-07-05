@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+import RoundTypeSelect from './RoundTypeSelect';
 
 import './style.css';
 
 export default function RoundCreater(props) {
+
+
     let questionHref = React.createRef();
     let answerHrefs = [];
 
@@ -21,6 +24,7 @@ export default function RoundCreater(props) {
 
     return(
         <div className="create-round-wrapper">
+            <RoundTypeSelect mode={props.mode} changeMode={props.changeMode} roundId={props.roundId}/>
             <input
                 className='create-round__input'
                 type="text"
@@ -37,10 +41,15 @@ export default function RoundCreater(props) {
                                 className='create-round__input'
                                 key={`${props.roundId}-${id}`}
                                 type="text"
-                                placeholder={`Ответ №${id+1}`}
+                                placeholder={`${(props.mode==="Select"&&id===0)?
+                                    "Правильный ответ":
+                                    (props.mode==="Select")?
+                                        `Вариант ответа №${id+1}`:
+                                        `Ответ №${id+1}`}`}
                                 value={answer}
                                 onChange={()=>changeAnswer(id)}
                                 ref={answerHrefs[id]}
+                                style={(props.mode==="Select"&&id===0)?{"background-color":"#9cffc8","color":"#3e3f3b"}:{}}
                             />
                         )
                 })
