@@ -49,7 +49,7 @@ export default function RoundCreater(props) {
                                 value={answer}
                                 onChange={()=>changeAnswer(id)}
                                 ref={answerHrefs[id]}
-                                style={(props.mode==="Select"&&id===0)?{"background-color":"#9cffc8","color":"#3e3f3b"}:{}}
+                                style={(props.mode==="Select"&&id===0)?{"backgroundColor":"#9cffc8","color":"#3e3f3b"}:{}}
                             />
                         )
                 })

@@ -7,6 +7,8 @@
     margin-bottom: 5px;
     display: flex;
     align-items: center;
+    transition: width 0.5s;
+    width: auto;
 }
 
 .create-round__type_select button {
@@ -17,9 +19,23 @@
     color: whitesmoke;
     font-size: 15px;
     font-weight: bold;
+    transition: background-color 0.5s;
+    cursor: pointer;
 }
 .create-round__type_select button span {
     margin-right: 5px;
+}
+
+[class ^= "type_select__ul"] {
+    transition: width 0.5s;
+    overflow: hidden;
+}
+
+.type_select__ul-entering, .type_select__ul-exiting  {
+    width: 0;
+}
+.type_select__ul-entered {
+    width: 60px;
 }
 
 .create-round__type_select li {

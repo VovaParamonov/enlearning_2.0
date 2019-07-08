@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import "./style.css";
 import { Transition } from "react-transition-group";
 
-export default function RoundWindow (props) {
+export default function RoundSelect (props) {
     const [buttonActive, setButtonActive] = useState(false);
-    const [exitMode, setExitMode] = useState("RoundWindow"); // mod of view round window
+    const [exitMode, setExitMode] = useState("RoundWindow");
     const [show, setShow] = useState(true);
 
     const roundInput = React.createRef();
@@ -58,6 +58,7 @@ export default function RoundWindow (props) {
         <Transition
             in={show}
             timeout={0}
+            // unmountOnExit={true}
             onExited={
                 () => {
                     roundClear();
@@ -74,7 +75,7 @@ export default function RoundWindow (props) {
 
                 return (
                     <div className={`RoundWindow ${animationClassName}`}>
-                        <p className={`RoundWindow__text`} >{`${text} [${props.mode}]`}</p>
+                        <p className={"RoundWindow__text"} >{text}</p>
                         <form action="#" onSubmit={checkAnswer}>
                             <input
                                 type="text"
@@ -95,7 +96,7 @@ export default function RoundWindow (props) {
     )
 }
 
-RoundWindow.propTypes = {
+RoundSelect.propTypes = {
     text: PropTypes.string,
     answer: PropTypes.array,
     roundId: PropTypes.number,

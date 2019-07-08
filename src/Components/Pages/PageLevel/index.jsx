@@ -26,6 +26,7 @@ export default function PageLevel (props) {
                 roundId={round.id}
                 goNextRound={goNextRound}
                 changeScore={changeScore}
+                mode={round.mode}
             />
 
         </div>

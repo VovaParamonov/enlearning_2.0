@@ -12,6 +12,7 @@ export default function LevelCard (props){
         if(e.target.className === "fas fa-trash-alt delete-icon"){ // fix
             return deleteSelf();
         }
+        console.log(props.rounds);
         props.startLevel({
             name: props.name,
             rounds: props.rounds
