@@ -74,7 +74,7 @@ export default function RoundWindow (props) {
 
                 return (
                     <div className={`RoundWindow ${animationClassName}`}>
-                        <p className={`RoundWindow__text`} >{`${text} [${props.mode}]`}</p>
+                        <p className={`RoundWindow__text`} >{`${text}`}</p>
                         <form action="#" onSubmit={checkAnswer}>
                             <input
                                 type="text"
