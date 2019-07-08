@@ -371,7 +371,7 @@
       <workItem from="1562292317397" duration="9499000" />
       <workItem from="1562480863993" duration="2967000" />
       <workItem from="1562518425986" duration="164000" />
-      <workItem from="1562560835772" duration="5540000" />
+      <workItem from="1562560835772" duration="5717000" />
     </task>
     <task id="LOCAL-00001" summary="new style and add mascot">
       <created>1558070592762</created>
@@ -391,11 +391,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169604000" />
+    <option name="totallyTimeSpent" value="169781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14937212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
